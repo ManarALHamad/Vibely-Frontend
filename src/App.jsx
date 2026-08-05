@@ -1,11 +1,12 @@
 import Nav from "./components/Nav"
 import SignUpForm from "./pages/SignUpForm"
-import SignInForm from './pages/SignInForm'
 import './App.css'
-import { Routes, Route } from "react-router"
+import { Routes, Route } from "react-router-dom"
 import { useState } from "react"
-import Dashboard from "./pages/Dashboard"
+import SignInForm from "./pages/SignInForm"
 import Landing from "./pages/Landing"
+import Dashboard from "./pages/Dashboard"
+
 
 
 const getUserFromToken = () => {
@@ -21,19 +22,16 @@ const App = () => {
   const [user, setUser] = useState(getUserFromToken())
   
   return (
-    <>
+    <div>
       <Nav user={user} setUser={setUser} />
-
       <main className="app-main">
-        <Routes>
-          <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
-          <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
-          <Route path='/' element={user ? <Dashboard user={user} /> : <Landing />} />
-  
-
-        </Routes>
+      <Routes>
+        <Route path='/' element={user ? <Dashboard user={user} /> : <Landing />} />
+        <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
+        <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
+      </Routes>
       </main>
-    </>
+    </div>
   )
 }
 

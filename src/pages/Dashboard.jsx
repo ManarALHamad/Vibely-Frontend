@@ -1,49 +1,36 @@
+import { useEffect, useState } from "react"
+import { index } from '../services/user'
 
-import { useEffect } from 'react'
-import * as userService from '../services/userService'
+const Dashboard = (props) => {
 
+    const [allUsers, setAllUsers] = useState([])
 
-const Dashboard = (props) =>{
-
-
-  
-useEffect(() => {
-
-const fetchUsers = async () =>{
-
- try {
-        const fetchedUsers = await userService.index()
-        console.log(fetchedUsers)
+    useEffect(() => {
+        const fetchUsers = async () => {
+            const usersData =  await index()
+            setAllUsers(usersData)
+        }
+        fetchUsers()
         
+    }, [])
 
-    } catch (err) {
-        console.log(err)
-        
-    }
-
+    return (
+        <section>
+            <header>
+                <h1>Welcome {props.user.username}!</h1>
+                <h2>View All the Users</h2>
+            </header>
+            {allUsers.map((user) => (
+                <div className="card">
+                    <header>
+                        <h1>
+                        {user.username}
+                        </h1>
+                    </header>
+                </div>
+            ))}
+        </section>
+    )
 }
 
-if(props.user) {
-
-    fetchUsers()
-}
-
-}, [props.user])
-
-
-return (
-
-    <>
-    
-    <h1>Hi 👋 {props.user.username}</h1>
-    <p>this is your website 💟</p>
-    
-    </>
-)
-
-
-
-
-}
-
-export default Dashboard 
+export default Dashboard

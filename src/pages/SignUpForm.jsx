@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { signUp } from "../services/auth"
-import { useNavigate } from "react-router"
+import { useNavigate } from "react-router-dom"
 
 const SignUpForm = (props) => {
 
@@ -10,6 +10,8 @@ const SignUpForm = (props) => {
         username: '',
         password: '',
         confirmPassword: '',
+        birthday: '',
+        email: '',
     }
 
     const [formData, setFormData] = useState(initialState)
@@ -49,6 +51,10 @@ const handleSubmit = async (event) => {
             <form onSubmit={handleSubmit}>
                 Username:
                 <input type="text" name="username" onChange={handleChange} value={formData.username} required />
+                 Birthday:
+                <input type="date" name="birthday"   onChange={handleChange} value={formData.birthday} required  />
+                Email:
+               <input type="text" name="email"  onChange={handleChange} value={formData.email} required  />
                 Password:
                 <input type="password" name="password" onChange={handleChange} value={formData.password} required />
                 Confirm Password:

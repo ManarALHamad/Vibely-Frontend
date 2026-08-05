@@ -1,6 +1,7 @@
-import { useNavigate } from "react-router"
+import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { signIn } from "../services/auth"
+
 
 const SignInForm = (props) => {
 
@@ -42,6 +43,8 @@ const SignInForm = (props) => {
                 <input type="text" name="username" value={formData.username} required onChange={handleChange} />
                 Password:
                 <input type="password" name="password" value={formData.password} required onChange={handleChange} />
+               
+
                 <div className="actions">
                     <button type="submit">Sign In</button>
                     <button type="button" onClick={() => navigate('/')}>Cancel</button>
