@@ -7,6 +7,7 @@ import SignInForm from "./pages/SignInForm"
 import Landing from "./pages/Landing"
 import Dashboard from "./pages/Dashboard"
 import PostForm from "./pages/posts/PostForm"
+import PostDetails from "./pages/posts/PostDetails"
 
 
 const getUserFromToken = () => {
@@ -30,7 +31,7 @@ const App = () => {
         <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
         <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
         <Route path="/posts/new" element={ <PostForm />} />
-
+        <Route path="/posts/:postId" element={<PostDetails posts={posts} isLoading={isLoading} deletePost={deletePost} />} />
       </Routes>
 
      
