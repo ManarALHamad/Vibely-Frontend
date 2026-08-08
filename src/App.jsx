@@ -29,10 +29,11 @@ const App = () => {
         <Route path='/' element={user ? <Dashboard user={user} /> : <Landing />} />
         <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
         <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
+        <Route path="/posts/new" element={ <PostForm />} />
 
       </Routes>
 
-      <PostForm/>
+     
       </main>
     </div>
   )
