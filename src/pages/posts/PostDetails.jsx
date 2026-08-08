@@ -23,7 +23,29 @@ const handleDelete = async () => {
         navigate('/posts')
     }
 
+return (
 
+   <main>
+
+            <h2>{post.caption}</h2>
+
+            { post.mediaType === "image"? <img src={post.mediaUrl} alt={post.caption} width="400" /> :
+        
+            <video src={post.mediaUrl} controls width="400"/> }
+                  
+            <p>Category: {post.category}</p>
+
+            <p> Posted by:{post.author.username}</p>
+
+            <button onClick={handleDelete}> Delete Post</button>
+               
+
+            <Link to={`/posts/${postId}/edit`}> Edit Post</Link>
+               
+            
+
+        </main>
+)
 
 }
 
