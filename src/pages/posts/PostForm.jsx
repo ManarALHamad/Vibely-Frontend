@@ -41,7 +41,7 @@ return(
 
         <form onSubmit={handleSubmit}>
 
-          Media Type:
+        Media Type:
 
         <select name="mediaType" value={formData.mediaType} onChange={handleChange}>
 
