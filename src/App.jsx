@@ -8,7 +8,7 @@ import Landing from "./pages/Landing"
 import Dashboard from "./pages/Dashboard"
 import PostForm from "./pages/posts/PostForm"
 import PostDetails from "./pages/posts/PostDetails"
-
+import * as postService from './service/posts'
 
 const getUserFromToken = () => {
   const token = localStorage.getItem('token')
@@ -24,6 +24,31 @@ const App = () => {
   const [posts, setPosts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   
+ useEffect(() => {
+    const fetchAllPosts = async () => {
+      try {
+        const postsData = await postService.index()
+        setPosts(postsData)
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchAllProducts()
+  }, [])
+
+const addPost = async (formData) => {
+  const newPost = await postService.create(formData)
+
+  setPosts([...posts, newPost])
+}
+
+
+
+
+
   return (
     <div>
       <Nav user={user} setUser={setUser} />
