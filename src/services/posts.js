@@ -1,8 +1,13 @@
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/posts`
 
 const index = async () => {
+  const token = localStorage.getItem('token')
 
-  const res = await fetch(BASE_URL)
+  const res = await fetch(BASE_URL, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
 
   const data = await res.json()
 
@@ -14,8 +19,13 @@ const index = async () => {
 }
 
 const show = async (id) => {
+  const token = localStorage.getItem('token')
 
-  const res = await fetch(`${BASE_URL}/${id}`)
+  const res = await fetch(`${BASE_URL}/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
 
   const data = await res.json()
 
@@ -27,20 +37,15 @@ const show = async (id) => {
 }
 
 const create = async (formData) => {
-
   const token = localStorage.getItem('token')
 
-  const res = await fetch(BASE_URL, {
-
+  const res = await fetch(`${BASE_URL}/new`, {
     method: 'POST',
-
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     },
-
     body: JSON.stringify(formData),
-
   })
 
   const data = await res.json()
@@ -53,17 +58,13 @@ const create = async (formData) => {
 }
 
 const deletePost = async (id) => {
-
   const token = localStorage.getItem('token')
 
   const res = await fetch(`${BASE_URL}/${id}`, {
-
     method: 'DELETE',
-
     headers: {
       Authorization: `Bearer ${token}`
     }
-
   })
 
   const data = await res.json()
@@ -76,20 +77,15 @@ const deletePost = async (id) => {
 }
 
 const update = async (id, formData) => {
-
   const token = localStorage.getItem('token')
 
   const res = await fetch(`${BASE_URL}/${id}`, {
-
     method: 'PUT',
-
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     },
-
     body: JSON.stringify(formData)
-
   })
 
   const data = await res.json()
