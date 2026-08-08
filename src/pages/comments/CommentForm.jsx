@@ -1,41 +1,41 @@
-import { useState } from "react"
+// import { useState } from "react"
 
-const CommentForm = (props) => {
+// const CommentForm = (props) => {
 
-    const initialState = {
-        content: ""
-    }
+//     const initialState = {
+//         content: ""
+//     }
 
-    const [formData, setFormData] = useState(initialState)
+//     const [formData, setFormData] = useState(initialState)
 
-    const handleChange = (event) => {
+//     const handleChange = (event) => {
 
-        setFormData({...formData,[event.target.name]: event.target.value })
+//         setFormData({...formData,[event.target.name]: event.target.value })
         
-    }
+//     }
 
-    const handleSubmit = async (event) => {
-        event.preventDefault()
+//     const handleSubmit = async (event) => {
+//         event.preventDefault()
 
-        await props.addComment(formData)
+//         await props.addComment(formData)
 
-        setFormData(initialState)
-    }
+//         setFormData(initialState)
+//     }
 
-    return (
+//     return (
 
-        <form onSubmit={handleSubmit}>
+//         <form onSubmit={handleSubmit}>
 
-            <textarea name="content" value={formData.content} onChange={handleChange} placeholder="Write a comment..." />
+//             <textarea name="content" value={formData.content} onChange={handleChange} placeholder="Write a comment..." />
         
 
-            <button type="submit"> Post Comment</button>
+//             <button type="submit"> Post Comment</button>
                
             
 
-        </form>
+//         </form>
 
-    )
-}
+//     )
+// }
 
-export default CommentForm
+// export default CommentForm
