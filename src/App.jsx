@@ -6,7 +6,7 @@ import { useState } from "react"
 import SignInForm from "./pages/SignInForm"
 import Landing from "./pages/Landing"
 import Dashboard from "./pages/Dashboard"
-
+import PostFormImage from "./pages/posts/PostFormImage"
 
 
 const getUserFromToken = () => {
@@ -30,6 +30,8 @@ const App = () => {
         <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
         <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
       </Routes>
+
+      <PostFormImage />
       </main>
     </div>
   )
