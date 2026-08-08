@@ -8,7 +8,7 @@ import Landing from "./pages/Landing"
 import Dashboard from "./pages/Dashboard"
 import PostForm from "./pages/posts/PostForm"
 import PostDetails from "./pages/posts/PostDetails"
-import * as postService from './service/posts'
+import * as postService from './services/posts'
 
 const getUserFromToken = () => {
   const token = localStorage.getItem('token')
