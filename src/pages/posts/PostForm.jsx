@@ -55,7 +55,7 @@ return(
 
         Caption:
 
-        <textarea name="caption" value={formData.caption}onChange={handleChange} />
+        <textarea name="caption" value={formData.caption} onChange={handleChange} />
 
         Category:
 
