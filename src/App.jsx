@@ -45,7 +45,25 @@ const addPost = async (formData) => {
   setPosts([...posts, newPost])
 }
 
+const deletePost = async (postId) => {
+  await postService.deletePost(postId)
 
+  const filteredPosts = posts.filter(
+    (post) => post._id !== postId
+  )
+
+  setPosts(filteredPosts)
+}
+
+const updatePost = async (postId, formData) => {
+  const updatedPost = await postService.update(postId, formData)
+
+  const updatedPostsArray = posts.map((post) => {
+    return post._id === postId ? updatedPost : post
+  })
+
+  setPosts(updatedPostsArray)
+}
 
 
 
