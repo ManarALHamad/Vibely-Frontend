@@ -1,8 +1,8 @@
 //post form (image)
 import { useState } from "react"
-import { useNavigate } from "react-router"
+import { useNavigate } from "react-router-dom"
 
-const PostFormImage = (props) => {
+const PostForm = (props) => {
 
 const navigate = useNavigate()
 
@@ -85,4 +85,4 @@ return(
 
 }
 
-export default PostFormImage
+export default PostForm
