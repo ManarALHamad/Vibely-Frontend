@@ -2,7 +2,7 @@ import Nav from "./components/Nav"
 import SignUpForm from "./pages/SignUpForm"
 import './App.css'
 import { Routes, Route } from "react-router-dom"
-import { useState } from "react"
+import { useEffect, useState } from 'react'
 import SignInForm from "./pages/SignInForm"
 import Landing from "./pages/Landing"
 import Dashboard from "./pages/Dashboard"
@@ -21,6 +21,8 @@ const getUserFromToken = () => {
 const App = () => {
 
   const [user, setUser] = useState(getUserFromToken())
+  const [posts, setPosts] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
   
   return (
     <div>

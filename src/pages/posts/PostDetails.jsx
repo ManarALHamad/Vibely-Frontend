@@ -1,10 +1,12 @@
 import { useParams, useNavigate, Link } from "react-router-dom"
 
-const { postId }  = useParams()
-const navigate = useNavigate()
 
 
 const PostDetails = (props) => {
+
+   const { postId }  = useParams()
+   const navigate = useNavigate()
+ 
 
  const post = props.posts.find((post) => {
         return post._id === postId
@@ -19,8 +21,8 @@ if (!post) {
     }
 
 const handleDelete = async () => {
-        await props.deleteProduct(postId)
-        navigate('/posts')
+        await props.deletePost(postId)
+        navigate('/')
     }
 
 return (
