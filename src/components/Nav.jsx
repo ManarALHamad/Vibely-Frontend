@@ -20,7 +20,7 @@ const Nav = (props) => {
 
           <li>Welcome, {props.user.username}!</li>
 
-           <li> <Link to="/">FEED  </Link> </li>     
+           <li> <Link to="/"> FEED  </Link> </li>     
                        
            <li>  <Link to="/posts/new"> NEW POST </Link> </li>            
                        
