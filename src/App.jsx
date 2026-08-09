@@ -9,6 +9,10 @@ import Dashboard from "./pages/Dashboard"
 import PostForm from "./pages/posts/PostForm"
 import PostDetails from "./pages/posts/PostDetails"
 import * as postService from './services/posts'
+import Profile from './pages/profile/Profile'
+
+
+
 
 const getUserFromToken = () => {
   const token = localStorage.getItem('token')
@@ -77,7 +81,7 @@ const updatePost = async (postId, formData) => {
       <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
       <Route path="/posts/new" element={ <PostForm addPost={addPost} />} />
       <Route path="/posts/:postId" element={<PostDetails posts={posts} isLoading={isLoading} deletePost={deletePost} />} />
-
+      <Route path="/profile" element={<Profile user={user} posts={posts} />} />
       </Routes>
 
      
