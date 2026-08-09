@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { index } from '../services/user'
-import PostList from "./posts/PostList"
+
 
 
 const Dashboard = (props) => {
@@ -30,10 +30,7 @@ const Dashboard = (props) => {
                         </h1>
                     </header>
 
-                     <PostList
-                posts={props.posts}
-                isLoading={props.isLoading}
-                 />
+                    
                 </div>
             ))}
         </section>

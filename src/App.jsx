@@ -72,11 +72,12 @@ const updatePost = async (postId, formData) => {
       <Nav user={user} setUser={setUser} />
       <main className="app-main">
       <Routes>
-      <Route path="/" element={user ? (<Dashboard user={user}posts={posts} />   ) : (<Landing />) } />
+      <Route path="/" element={user ? (<Dashboard user={user} posts={posts} isLoading={isLoading} />   ) : (<Landing />) } />
       <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
       <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
       <Route path="/posts/new" element={ <PostForm addPost={addPost} />} />
       <Route path="/posts/:postId" element={<PostDetails posts={posts} isLoading={isLoading} deletePost={deletePost} />} />
+
       </Routes>
 
      
