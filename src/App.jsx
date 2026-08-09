@@ -84,6 +84,12 @@ const updatePost = async (postId, formData) => {
       <Route path="/posts/:postId" element={<PostDetails posts={posts} isLoading={isLoading} deletePost={deletePost} />} />
       <Route path="/profile" element={<Profile user={user} posts={posts} />} />
       <Route path="/posts" element={<PostList posts={posts} isLoading={isLoading} /> }/>
+      <Route path="/posts/:postId/edit"element={<UpdatePost posts={posts} updatePost={updatePost} />} />
+    
+    
+ 
+  
+
     
    
       </Routes>
