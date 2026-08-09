@@ -10,6 +10,7 @@ import PostForm from "./pages/posts/PostForm"
 import PostDetails from "./pages/posts/PostDetails"
 import * as postService from './services/posts'
 import Profile from './pages/profile/Profile'
+import PostList from "./pages/posts/PostList"
 
 
 
