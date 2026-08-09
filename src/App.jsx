@@ -51,13 +51,14 @@ const addPost = async (formData) => {
 }
 
 const deletePost = async (postId) => {
-  await postService.deletePost(postId)
 
-  const filteredPosts = posts.filter(
-    (post) => post._id !== postId
-  )
+    await postService.deletePost(postId)
 
-  setPosts(filteredPosts)
+    const filteredPosts = posts.filter((post) => {
+        return post._id !== postId
+    })
+
+    setPosts(filteredPosts)
 }
 
 const updatePost = async (postId, formData) => {
