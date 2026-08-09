@@ -1,4 +1,5 @@
 import { useParams, useNavigate, Link } from "react-router-dom"
+import CommentForm from "../comments/CommentForm"
 
 
 
@@ -44,7 +45,9 @@ return (
 
             <Link to={`/posts/${postId}/edit`}> Edit Post</Link>
                
-            
+            <CommentForm
+             addComment={addComment}
+               />
 
         </main>
 )
