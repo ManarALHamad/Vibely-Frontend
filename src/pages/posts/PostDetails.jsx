@@ -22,7 +22,7 @@ if (!post) {
 
 const handleDelete = async () => {
         await props.deletePost(postId)
-        navigate('/')
+        navigate('/posts')
     }
 
 return (

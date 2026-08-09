@@ -8,7 +8,7 @@ import Landing from "./pages/Landing"
 import Dashboard from "./pages/Dashboard"
 import PostForm from "./pages/posts/PostForm"
 import PostDetails from "./pages/posts/PostDetails"
-import * as postService from './services/posts'
+import * as postService from './services/postService'
 import Profile from './pages/profile/Profile'
 import PostList from "./pages/posts/PostList"
 import UpdatePost from "./pages/posts/UpdatePost"
