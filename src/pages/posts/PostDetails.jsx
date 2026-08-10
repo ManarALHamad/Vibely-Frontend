@@ -51,6 +51,24 @@ return (
 
                />
 
+            {/* Display the comments under the post    */}
+
+            <h3>Comments</h3>
+
+    {props.comments.filter((comment) => comment.post === post._id) .map((comment) => (
+       
+       <div key={comment._id}>
+   
+       <p>{comment.author.username} </p>
+       <p>{comment.content}</p>
+
+            </div>
+ 
+            
+
+       
+    ))}
+
         </main>
 )
 
