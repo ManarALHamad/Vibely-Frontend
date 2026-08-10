@@ -12,6 +12,8 @@ import * as postService from './services/postService'
 import Profile from './pages/profile/Profile'
 import PostList from "./pages/posts/PostList"
 import UpdatePost from "./pages/posts/UpdatePost"
+import CommentForm from "./pages/comments/CommentForm"
+import * as commentService from './services/commentService'
 
 
 
@@ -28,7 +30,9 @@ const App = () => {
   const [user, setUser] = useState(getUserFromToken())
   const [posts, setPosts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  
+
+  //posts
+
  useEffect(() => {
     const fetchAllPosts = async () => {
       try {
@@ -71,6 +75,11 @@ const updatePost = async (postId, formData) => {
   setPosts(updatedPostsArray)
 }
 
+//comments
+
+
+
+
 
 
   return (
@@ -86,6 +95,7 @@ const updatePost = async (postId, formData) => {
       <Route path="/profile" element={<Profile user={user} posts={posts} />} />
       <Route path="/posts" element={<PostList posts={posts} isLoading={isLoading} /> }/>
       <Route path="/posts/:postId/edit"element={<UpdatePost posts={posts} updatePost={updatePost} />} />
+
     
     
  

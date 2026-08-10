@@ -70,9 +70,9 @@ const UpdatePost = (props) => {
         </select>                    
 
 
-                <button type="submit">
-                    Save Changes
-                </button>
+        <button type="submit">Save Changes </button>
+                    
+               
 
             </form>
 
