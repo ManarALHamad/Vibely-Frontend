@@ -46,7 +46,9 @@ return (
             <Link to={`/posts/${postId}/edit`}> Edit Post</Link>
                
             <CommentForm
-             addComment={addComment}
+             postId={post._id}
+             addComment={props.addComment}
+
                />
 
         </main>
