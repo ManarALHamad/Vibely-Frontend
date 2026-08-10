@@ -50,6 +50,7 @@ const App = () => {
   }, [])
 
 const addPost = async (formData) => {
+
   const newPost = await postService.create(formData)
 
   setPosts([...posts, newPost])
@@ -76,6 +77,18 @@ const updatePost = async (postId, formData) => {
   setPosts(updatedPostsArray)
 }
 
+//comments
+
+const addComment = async (postId, formData) => {
+
+    const newComment = await commentService.create(
+        postId,
+        formData
+    )
+
+    setComments([...comments, newComment])
+
+}
 
   return (
     <div>
@@ -86,7 +99,7 @@ const updatePost = async (postId, formData) => {
       <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
       <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
       <Route path="/posts/new" element={ <PostForm addPost={addPost} />} />
-      <Route path="/posts/:postId" element={<PostDetails posts={posts} isLoading={isLoading} deletePost={deletePost} />} />
+      <Route path="/posts/:postId" element={<PostDetails posts={posts} comments={comments} addComment={addComment} isLoading={isLoading} deletePost={deletePost} />} />
       <Route path="/profile" element={<Profile user={user} posts={posts} />} />
       <Route path="/posts" element={<PostList posts={posts} isLoading={isLoading} /> }/>
       <Route path="/posts/:postId/edit"element={<UpdatePost posts={posts} updatePost={updatePost} />} />
