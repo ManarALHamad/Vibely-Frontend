@@ -17,7 +17,11 @@ const CommentForm = (props) => {
     const handleSubmit = async (event) => {
         event.preventDefault()
 
-        await props.addComment(formData)
+        await props.addComment(
+            
+            props.postId,
+            formData
+        )
 
         setFormData(initialState)
     }
