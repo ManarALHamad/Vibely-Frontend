@@ -12,8 +12,8 @@ import * as postService from './services/postService'
 import Profile from './pages/profile/Profile'
 import PostList from "./pages/posts/PostList"
 import UpdatePost from "./pages/posts/UpdatePost"
-import CommentForm from "./pages/comments/CommentForm"
 import * as commentService from './services/commentService'
+import CommentForm from "./pages/comments/CommentForm"
 
 
 
@@ -30,6 +30,7 @@ const App = () => {
   const [user, setUser] = useState(getUserFromToken())
   const [posts, setPosts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [comments, setComments] = useState([])
 
   //posts
 
@@ -74,12 +75,6 @@ const updatePost = async (postId, formData) => {
 
   setPosts(updatedPostsArray)
 }
-
-//comments
-
-
-
-
 
 
   return (
