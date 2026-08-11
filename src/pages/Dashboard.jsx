@@ -29,7 +29,7 @@ const Dashboard = (props) => {
 
         <h2>Feed</h2>
 
-        <PostList posts={props.posts} isLoading={props.isLoading} />
+        <PostList posts={props.posts} isLoading={props.isLoading} user={props.user} toggleLike={props.toggleLike} />
             
         </section>
 

@@ -111,9 +111,9 @@ const toggleLike = async (postId) => {
 
   const updatedPosts = posts.map((post) =>{
 
-    if (post._id === postId) {
-      return updatePost
-    }
+   if (post._id === postId) {
+     return updatedPost
+   }
 
     return post
 
@@ -139,7 +139,7 @@ const toggleLike = async (postId) => {
       <Route path="/posts/new" element={ <PostForm addPost={addPost} />} />
       <Route path="/posts/:postId" element={<PostDetails posts={posts} comments={comments} addComment={addComment} isLoading={isLoading} deletePost={deletePost} />} />
       <Route path="/profile" element={<Profile user={user} posts={posts} />} />
-      <Route path="/posts" element={<PostList posts={posts} isLoading={isLoading} /> }/>
+      <Route path="/posts" element={<PostList posts={posts}  user={user}  toggleLike={toggleLike} isLoading={isLoading} /> }/>
       <Route path="/posts/:postId/edit"element={<UpdatePost posts={posts} updatePost={updatePost} />} />
 
     
