@@ -133,7 +133,7 @@ const toggleLike = async (postId) => {
       <Nav user={user} setUser={setUser} />
       <main className="app-main">
       <Routes>
-      <Route path="/" element={user ? (<Dashboard user={user} posts={posts} oggleLike={toggleLike} isLoading={isLoading} />   ) : (<Landing />) } />
+      <Route path="/" element={user ? (<Dashboard user={user} posts={posts} toggleLike={toggleLike} isLoading={isLoading} />   ) : (<Landing />) } />
       <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
       <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
       <Route path="/posts/new" element={ <PostForm addPost={addPost} />} />

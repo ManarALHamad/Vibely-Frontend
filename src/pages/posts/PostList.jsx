@@ -8,29 +8,58 @@ const PostList = (props) => {
         return <p>Loading posts...</p>
     }
 
-    return (
-        <main>
+   return (
+    <main>
+
      <h2>All Posts</h2>
 
-    {props.posts.map((post) => (
-     
-     <div key={post._id}>
+      {props.posts.map((post) => {
+        
+        const isLiked = post.likes?.some((like) => {
+        return like === props.user._id
+         })
 
-      {post.mediaType === "image" ? (
-        <img src={post.mediaUrl} alt={post.caption}width="300"/> ) : (
-        <video  src={post.mediaUrl} controls width="300"/>)}
-              
-         <h3>{post.caption}</h3>            
-         <p>{post.category}</p>
-         </div>
-                   
-        ))} 
+       return (
+
+         <div key={post._id}>
+
+        {post.mediaType === "image" ? (
+        
+        <img src={post.mediaUrl}alt={post.caption}width="300" />
                 
-                    
+        ) : (
+        <video src={post.mediaUrl} controls  width="300"  />
+     
+         )}
 
+         <h3>{post.caption}</h3>
+         <p>{post.category}</p>
+                
+        {/* like button ♥️ */}
+
+        <button  onClick={() => props.toggleLike(post._id)} > {isLiked ? "❤️" : "🤍"}  </button>        
+
+
+        <span> {post.likes?.length || 0} likes </span>
+                           
+        {/* post details  */}
+
+        <Link to={`/posts/${post._id}`}> View Post </Link>
+                           
+                       
+
+                    </div>
+
+                )
+
+            })}
 
         </main>
     )
+    
+
+     
+    
 }
 
 export default PostList
