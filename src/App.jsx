@@ -103,6 +103,25 @@ const addComment = async (postId, formData) => {
 
 }
 
+//delete comment
+
+const deleteComment = async (commentId) => {
+
+  await commentService.deleteComment(commentId)
+
+  const filteredComments = comments.filter((comment) => {
+    return comment._id !== commentId
+    })
+
+    setComments(filteredComments)
+
+
+
+}
+
+
+
+
 //posts likes 
 
 const toggleLike = async (postId) => {
