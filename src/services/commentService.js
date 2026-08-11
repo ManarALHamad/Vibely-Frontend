@@ -71,9 +71,35 @@ const deleteComment = async (commentId) => {
     return data
 }
 
+//so the user can edit and update their comment
+
+const update = async (commentId, formData) => {
+
+    const token = localStorage.getItem('token')
+
+    const res = await fetch(`${BASE_URL}/${commentId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(formData)
+    })
+
+    const data = await res.json()
+
+     if (!res.ok) {
+        throw new Error(`${res.status}: ${data.message}`)
+    }
+
+    return data
+
+}
+
 
 export {
     create,
     deleteComment,
     index,
+    update,
 }
