@@ -1,6 +1,7 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/posts`
 
 const index = async () => {
+
   const token = localStorage.getItem('token')
 
   const res = await fetch(BASE_URL, {
@@ -97,10 +98,36 @@ const update = async (id, formData) => {
   return data
 }
 
+const toggleLike = async (postId) => {
+
+  const token = localStorage.getItem("token")
+
+  const res = await fetch(`${BASE_URL}/${postId}/like`, {
+  
+    method: "PUT",
+    headers: {
+    Authorization: `Bearer ${token}`
+        }
+    })
+
+ const data = await res.json()
+
+  if (!res.ok) {
+   
+    throw new Error(`${res.status}: ${data.message}`)
+    }
+
+    return data
+}
+
+
+
+
 export {
   index,
   show,
   create,
   deletePost,
-  update
+  update,
+  toggleLike,
 }
