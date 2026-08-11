@@ -81,6 +81,11 @@ return (
        <p>{comment.author?.username} </p>
        <p>{comment.content}</p>
 
+       {/* delete comment button */}
+
+       <button onClick={() => props.deleteComment(comment._id)} > Delete Comment </button>
+             
+
         </div>
        
     ))}
