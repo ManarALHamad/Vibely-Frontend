@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { index } from '../services/user'
-
+import PostList from "./posts/PostList"
 
 
 const Dashboard = (props) => {
@@ -17,22 +17,41 @@ const Dashboard = (props) => {
     }, [])
 
     return (
-        <section>
-            <header>
-                <h1>Welcome {props.user.username}!</h1>
-                <h2>View All the Users</h2>
-            </header>
-            {allUsers.map((user) => (
-                <div className="card">
-                    <header>
-                        <h1>
-                        {user.username}
-                        </h1>
-                    </header>
 
-                    
-                </div>
-            ))}
+        <section>
+
+         <header>
+                <h1>Welcome {props.user.username}!</h1>
+        </header>
+
+
+        <section>
+
+        <h2>Feed</h2>
+
+        <PostList posts={props.posts} isLoading={props.isLoading} />
+            
+        </section>
+
+
+        <section>
+
+         <h2>View All Users</h2>
+
+        {allUsers.map((user) => (
+
+        <div className="card" key={user._id}>
+     
+        <h3>{user.username}  </h3>
+          </div>                   
+                      
+
+                   
+
+                ))}
+
+            </section>
+
         </section>
     )
 }

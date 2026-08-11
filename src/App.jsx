@@ -35,25 +35,38 @@ const App = () => {
   //posts
 
  useEffect(() => {
+
     const fetchAllPosts = async () => {
+
       try {
+
         const postsData = await postService.index()
         setPosts(postsData)
+
       } catch (error) {
+
         console.log(error)
+
       } finally {
         setIsLoading(false)
       }
     }
 
-    fetchAllPosts()
-  }, [])
+    if (user) {
+      fetchAllPosts()
+    }
+
+    
+  }, [user])
 
 const addPost = async (formData) => {
 
   const newPost = await postService.create(formData)
 
-  setPosts([...posts, newPost])
+  // newest posts will appear first
+
+  setPosts([newPost, ...posts])
+
 }
 
 const deletePost = async (postId) => {
