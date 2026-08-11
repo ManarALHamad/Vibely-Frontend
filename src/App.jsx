@@ -69,6 +69,8 @@ useEffect(() => {
 
       const commentsData = await commentService.index()
 
+      // console.log("COMMENTS FROM DATABASE:", commentsData)
+
       setComments(commentsData)
       
     } catch (error) {
@@ -80,7 +82,7 @@ useEffect(() => {
 
   if(user) {
 
-    fetchAllComments
+    fetchAllComments()
   }
 
 }, [user])
@@ -142,7 +144,6 @@ const deleteComment = async (commentId) => {
     })
 
     setComments(filteredComments)
-
 
 
 }
