@@ -103,12 +103,37 @@ const addComment = async (postId, formData) => {
 
 }
 
+//posts likes 
+
+const toggleLike = async (postId) => {
+
+  const updatedPost = await postService.toggleLike(postId)
+
+  const updatedPosts = posts.map((post) =>{
+
+    if (post._id === postId) {
+      return updatePost
+    }
+
+    return post
+
+  })
+
+  setPosts(updatedPosts)
+
+
+
+
+}
+
+
+
   return (
     <div>
       <Nav user={user} setUser={setUser} />
       <main className="app-main">
       <Routes>
-      <Route path="/" element={user ? (<Dashboard user={user} posts={posts} isLoading={isLoading} />   ) : (<Landing />) } />
+      <Route path="/" element={user ? (<Dashboard user={user} posts={posts} oggleLike={toggleLike} isLoading={isLoading} />   ) : (<Landing />) } />
       <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
       <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
       <Route path="/posts/new" element={ <PostForm addPost={addPost} />} />
