@@ -59,6 +59,34 @@ const App = () => {
     
   }, [user])
 
+//useEffect for the comments
+
+useEffect(() => {
+
+  const fetchAllComments = async () => {
+
+    try {
+
+      const commentsData = await commentService.index()
+
+      setComments(commentsData)
+      
+    } catch (error) {
+
+      console.log(error)
+      
+    }
+  }
+
+  if(user) {
+
+    fetchAllComments
+  }
+
+}, [user])
+
+
+
 const addPost = async (formData) => {
 
   const newPost = await postService.create(formData)
