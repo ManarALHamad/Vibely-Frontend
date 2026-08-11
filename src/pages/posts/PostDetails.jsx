@@ -45,16 +45,16 @@ return (
 
             <Link to={`/posts/${postId}/edit`}> Edit Post</Link>
                
-            //only other users see the commentForm and comment
+            
 
-            {post.author._id !== props.user._id && (
+            
             <CommentForm
              postId={post._id}
              addComment={props.addComment}
 
                />
 
-            )}
+           
 
            
 
