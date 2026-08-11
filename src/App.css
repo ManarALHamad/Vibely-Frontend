@@ -182,3 +182,187 @@
     border-right-color: var(--border);
   }
 }
+/* =========================
+   PROFILE PAGE
+========================= */
+
+.profile-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+
+/* PROFILE HEADER */
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 30px 20px 50px;
+    border-bottom: 1px solid #ddd;
+}
+
+.profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-info h1 {
+    margin: 0 0 25px;
+    font-size: 28px;
+}
+
+
+/* STATS */
+
+.profile-stats {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 25px;
+}
+
+.profile-stats div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-stats strong {
+    font-size: 20px;
+}
+
+.profile-stats span {
+    font-size: 14px;
+    color: #777;
+}
+
+
+/* BUTTONS */
+
+.profile-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.profile-actions button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+
+/* POSTS */
+
+.profile-posts {
+    padding-top: 30px;
+}
+
+.profile-posts h2 {
+    margin-bottom: 25px;
+}
+
+
+/* POST GRID */
+
+.profile-post-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+
+.profile-post {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+}
+
+.profile-post img,
+.profile-post video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* POST HOVER */
+
+.profile-post-info {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, 0.55);
+    color: white;
+
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.profile-post:hover .profile-post-info {
+    opacity: 1;
+}
+
+.profile-post-info p {
+    margin: 0 10px 5px;
+    text-align: center;
+}
+
+.profile-post-info span {
+    font-size: 13px;
+}
+
+
+/* EMPTY PROFILE */
+
+.no-posts {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.no-posts h3 {
+    margin-bottom: 5px;
+}
+
+.no-posts p {
+    color: #777;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    .profile-header {
+        gap: 25px;
+        align-items: flex-start;
+    }
+
+    .profile-picture img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .profile-stats {
+        gap: 20px;
+    }
+
+    .profile-post-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
