@@ -14,14 +14,21 @@ const PostList = (props) => {
      <h2>All Posts</h2>
 
       {props.posts.map((post) => {
-        
-        const isLiked = post.likes?.some((like) => {
-        return like === props.user._id
-         })
+
+    const isLiked = post.likes?.some(
+        (like) => like._id === props.user._id
+    )
 
        return (
 
          <div key={post._id}>
+
+         {/* post author */}
+
+        <p>Posted By: {post.author?.username} </p>
+
+
+
 
         {post.mediaType === "image" ? (
         
@@ -41,6 +48,20 @@ const PostList = (props) => {
 
 
         <span> {post.likes?.length || 0} likes </span>
+
+
+        {/* who liked it */}
+
+         {post.likes?.length > 0 && (
+
+          <p> Liked by:{" "}
+          {post.likes.map((like) => {                      
+          
+          return like.username}).join(", ")} </p>
+                                
+             
+             )}                       
+                                
                            
         {/* post details  */}
 
