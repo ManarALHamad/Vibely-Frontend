@@ -124,11 +124,8 @@ const updatePost = async (postId, formData) => {
 
 const addComment = async (postId, formData) => {
 
-    const newComment = await commentService.create(
-        postId,
-        formData
-    )
-
+    const newComment = await commentService.create(postId,formData)
+       
     setComments([...comments, newComment])
 
 }
@@ -148,6 +145,23 @@ const deleteComment = async (commentId) => {
 
 }
 
+//update comment
+
+const updateComment = async (commentId, formData) => {
+
+  const updatedComment = await commentService.update(commentId, formData)
+
+    const updatedComments = comments.map((comment) => {
+
+     if (comment._id === commentId) {
+     return updatedComment
+        }
+
+        return comment
+    })
+
+    setComments(updatedComments)
+}
 
 
 
