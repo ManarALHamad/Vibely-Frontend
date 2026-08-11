@@ -28,7 +28,32 @@ const create = async (postId, formData) => {
     return data
 }
 
+const deleteComment = async (commentId) => {
+
+    const token = localStorage.getItem('token')
+
+    const res = await fetch(`${BASE_URL}/${commentId}`, {
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+
+    const data = await res.json()
+
+    if (!res.ok) {
+        throw new Error(`${res.status}: ${data.message}`)
+    }
+
+    return data
+}
+
+
+
+
+
 
 export {
     create,
+    deleteComment,
 }

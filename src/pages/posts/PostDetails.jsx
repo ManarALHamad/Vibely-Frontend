@@ -7,7 +7,8 @@ const PostDetails = (props) => {
 
    const { postId }  = useParams()
    const navigate = useNavigate()
- 
+
+
 
  const post = props.posts.find((post) => {
         return post._id === postId
@@ -26,6 +27,13 @@ const handleDelete = async () => {
         navigate('/posts')
     }
 
+
+// only owner can see deleteButton and add Button other user only can write comment
+
+   const isOwner = post.author?._id === props.user?._id
+ 
+
+
 return (
 
    <main>
@@ -40,12 +48,20 @@ return (
 
             <p> Posted by:{post.author.username}</p>
 
-            <button onClick={handleDelete}> Delete Post</button>
-               
 
-            <Link to={`/posts/${postId}/edit`}> Edit Post</Link>
-               
-            
+            {isOwner && (
+
+                <>
+
+                <button onClick={handleDelete}> Delete Post</button>
+
+                 <Link to={`/posts/${postId}/edit`}> Edit Post</Link>
+                
+                </>
+            )
+
+
+            }
 
             
             <CommentForm
@@ -54,19 +70,15 @@ return (
 
                />
 
-           
-
-           
-
             {/* Display the comments under the post    */}
 
             <h3>Comments</h3>
 
-    {props.comments.filter((comment) => comment.post === post._id) .map((comment) => (
+       {props.comments.filter((comment) => comment.post === post._id) .map((comment) => (
        
        <div key={comment._id}>
    
-       <p>{comment.author.username} </p>
+       <p>{comment.author?.username} </p>
        <p>{comment.content}</p>
 
         </div>
