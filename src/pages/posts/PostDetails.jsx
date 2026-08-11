@@ -1,4 +1,5 @@
 import { useParams, useNavigate, Link } from "react-router-dom"
+import { useState } from "react"
 import CommentForm from "../comments/CommentForm"
 
 
@@ -8,11 +9,14 @@ const PostDetails = (props) => {
    const { postId }  = useParams()
    const navigate = useNavigate()
 
+   //comments editing
+   const [editingCommentId, setEditingCommentId] = useState(null)
+   const [editContent, setEditContent] = useState("")
 
-
- const post = props.posts.find((post) => {
+   const post = props.posts.find((post) => {
         return post._id === postId
     })
+
 
  if (props.isLoading) {
         return <p>Loading posts...</p>
@@ -30,75 +34,114 @@ const handleDelete = async () => {
 
 // only owner can see deleteButton and add Button other user only can write comment
 
-   const isOwner = post.author?._id === props.user?._id
+ const isOwner = post.author?._id === props.user?._id
  
+
+const handleEditComment = (comment) => {
+
+    setEditingCommentId(comment._id)
+    setEditContent(comment.content)
+}
+
+//comment updating 
+
+const handleUpdateComment = async (commentId) => { 
+
+    await props.updateComment(commentId, {
+     content: editContent    
+})
+
+
+setEditingCommentId(null)
+setEditContent("")
+
+}
 
 
 return (
 
    <main>
 
-            <h2>{post.caption}</h2>
+     <h2>{post.caption}</h2>
 
-            { post.mediaType === "image"? <img src={post.mediaUrl} alt={post.caption} width="400" /> :
+    { post.mediaType === "image"? <img src={post.mediaUrl} alt={post.caption} width="400" /> :
         
-            <video src={post.mediaUrl} controls width="400"/> }
+    <video src={post.mediaUrl} controls width="400"/> }
                   
-            <p>Category: {post.category}</p>
+    <p>Category: {post.category}</p>
 
-            <p> Posted by:{post.author.username}</p>
+    <p> Posted by:{post.author.username}</p>
 
 
-            {isOwner && (
+    {isOwner && (
 
-                <>
+     <>
 
-                <button onClick={handleDelete}> Delete Post</button>
+     <button onClick={handleDelete}> Delete Post</button>
 
-                 <Link to={`/posts/${postId}/edit`}> Edit Post</Link>
+      <Link to={`/posts/${postId}/edit`}> Edit Post</Link>
                 
-                </>
-            )
+        </>
+        )}
 
+{/* import comment form    */}
 
-            }
+<CommentForm postId={post._id}addComment={props.addComment} />
 
+{/* Display the comments under the post    */}
+
+ <h3>Comments</h3>
+
+    {props.comments.filter((comment) => {
+    
+    const commentPostId = comment.post?._id || comment.post
+
+        return commentPostId === post._id }).map((comment) => {
+
+        const isCommentOwner =
+            comment.author?._id === props.user?._id
+
+        return (
+        
+        <div key={comment._id}>
+
+        <p>{comment.author?.username}</p>
+        
+        {editingCommentId === comment._id ? (
+        
+        <>
+         <input type="text" value={editContent} onChange={(event) =>   setEditContent(event.target.value) } />         
             
-            <CommentForm
-             postId={post._id}
-             addComment={props.addComment}
+         {/* save the update */}
 
-               />
+        <button onClick={() => handleUpdateComment(comment._id)} >Save💟</button>
+                           
+         </>                
+          ) : (                    
+                        
+         <p>{comment.content}</p>                   
+                        
+         )}           
+              
+                   
+        {isCommentOwner && (       
 
-            {/* Display the comments under the post    */}
+          <>        
+         <button onClick={() =>handleEditComment(comment)}> Edit  </button>
+  
+         <button onClick={() => props.deleteComment(comment._id)} > Delete Comment </button>
+                           
+          
+        </>
+         )}
 
-        <h3>Comments</h3>
-
-{props.comments
-    .filter((comment) => {
-
-        const commentPostId = comment.post?._id || comment.post
-
-        return commentPostId === post._id
-    }).map((comment) => (
-               
-       <div key={comment._id}>
-   
-       <p>{comment.author?.username} </p>
-       <p>{comment.content}</p>
-
-       {/* delete comment button */}
-
-       <button onClick={() => props.deleteComment(comment._id)} > Delete Comment </button>
-             
-
-        </div>
-       
-    ))}
-
-        </main>
+            </div>
+        )
+    })}
+    </main>
 )
 
 }
+    
 
 export default PostDetails
