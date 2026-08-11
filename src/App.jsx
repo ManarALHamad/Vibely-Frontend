@@ -199,7 +199,7 @@ const toggleLike = async (postId) => {
       <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
       <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
       <Route path="/posts/new" element={ <PostForm addPost={addPost} />} />
-      <Route path="/posts/:postId" element={<PostDetails posts={posts} comments={comments} addComment={addComment} deleteComment={deleteComment} deletePost={deletePost} user={user} isLoading={isLoading}  />} />
+      <Route path="/posts/:postId" element={<PostDetails posts={posts} comments={comments} addComment={addComment} updateComment={updateComment} deleteComment={deleteComment} deletePost={deletePost} user={user} isLoading={isLoading}  />} />
       <Route path="/profile" element={<Profile user={user} posts={posts} />} />
       <Route path="/posts" element={<PostList posts={posts}  user={user}  toggleLike={toggleLike} isLoading={isLoading} /> }/>
       <Route path="/posts/:postId/edit"element={<UpdatePost posts={posts} updatePost={updatePost} />} />
