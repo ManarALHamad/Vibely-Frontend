@@ -28,8 +28,8 @@ const handleSubmit = async (event) => {
         await props.addPost(formData)
 
         setFormData(initialState)
-
-        navigate("/posts")
+// to see the posts in the feed page
+        navigate("/")
     }
 
 
