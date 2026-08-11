@@ -40,7 +40,9 @@ return (
 
    <div className="profile-info">
 
-    <h1>{props.user.username}</h1>
+      <h1 className="profile-username">
+        {props.user.username}
+    </h1>
 
       <div className="profile-stats">
 
