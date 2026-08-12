@@ -11,26 +11,42 @@ const UploadWidget = (props) => {
     cloudinaryRef.current = window.cloudinary
 
     widgetRef.current = cloudinaryRef.current.createUploadWidget(
+
     {
     cloudName: "p16cweqr",
     uploadPreset: "vibely_uploads",
     sources: ["local"],
     resourceType: "auto"
      },
+
     (error, result) => {
 
      if (!error && result.event === "success") {
 
-    console.log("Uploaded", result.info)
+   
+    props.handleUpload (
 
-    props.setMediaUrl(result.info.secure_url)
-    props.setMediaType(result.info.resource_type)
+        result.info.secure_url,
+        result.info.resource_type
+
+
+    )
+
+
+
     }
 
     }
      )
 
     }, [])
+
+return (
+
+    <button onClick={() => widgetRef.current.open()} >Upload</button>
+)
+
+
 
 
 }

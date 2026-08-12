@@ -30,14 +30,31 @@ const PostList = (props) => {
 
 
 
-        {post.mediaType === "image" ? (
+        {/* {post.mediaType === "image" ? (
         
         <img src={post.mediaUrl}alt={post.caption}width="300" />
                 
         ) : (
         <video src={post.mediaUrl} controls  width="300"  />
      
-         )}
+         )} */}
+
+        {post.mediaUrl && (
+
+            <>
+            {post.mediaType === "image" ? (
+
+                <img  src={post.mediaUrl} width="300"  />
+             ) : (
+
+                <video  src={post.mediaUrl} controls width="300" /> )}
+            
+            </>
+        )}
+
+  
+
+
 
          <h3>{post.caption}</h3>
          <p>{post.category}</p>

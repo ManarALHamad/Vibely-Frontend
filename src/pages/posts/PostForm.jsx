@@ -26,18 +26,21 @@ const [formData, setFormData] = useState(initialState)
 
 //upload 
 
-const handleUpdate =(url, type) => {
+const handleUpload =(url, type) => {
 
-    setFormData({...formData,
+
+    setFormData((previousData) => ({
+        ...previousData,
         mediaUrl: url,
         mediaType: type
-    })
+    }))
 
 }
 
 
 
 const handleSubmit = async (event) => {
+
         event.preventDefault()
 
         await props.addPost(formData)
@@ -58,18 +61,28 @@ return(
 
         {/* cloudinary uploads  */}
 
-        <UploadWidget setMediaUrl={(url) =>
+        <UploadWidget handleUpload={handleUpload}  />
 
-            handleUpload(url, formData.mediaType)
-        }
-
-        setMediaType={(type) =>
-            setFormData((previousData) => ({...previousData,mediaType: type}))
-
-        }
         
-        
-        />
+
+       {formData.mediaUrl && (
+        <div>
+        {formData.mediaType === "image" ? (
+
+              <img src={formData.mediaUrl} alt="Preview" width="300" />
+                
+                
+             
+            
+        ) : (
+              <video src={formData.mediaUrl} controls width="300" />
+                
+            
+        )}
+
+       </div>
+    )}
+    
 
         Media Type:
 
@@ -79,9 +92,9 @@ return(
               <option value="video">Video</option>     
         </select>   
 
-        Media URL:
+        {/* Media URL:
 
-        <input type="url" name="mediaUrl" value={formData.mediaUrl} onChange={handleChange} placeholder="https://..."   />
+        <input type="url" name="mediaUrl" value={formData.mediaUrl} onChange={handleChange} placeholder="https://..."   /> */}
 
         Caption:
 
