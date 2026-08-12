@@ -1,4 +1,4 @@
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/users`
 
 const index = async (formData) => {
     try {
