@@ -1,6 +1,7 @@
 //post form (image)
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import UploadWidget from "../../components/UploadWidget"
 
 const PostForm = (props) => {
 
@@ -22,6 +23,20 @@ const [formData, setFormData] = useState(initialState)
   setFormData({...formData,[event.target.name]: event.target.value})
 
     }
+
+//upload 
+
+const handleUpdate =(url, type) => {
+
+    setFormData({...formData,
+        mediaUrl: url,
+        mediaType: type
+    })
+
+}
+
+
+
 const handleSubmit = async (event) => {
         event.preventDefault()
 
@@ -40,6 +55,21 @@ return(
         <h2>Create a post</h2>
 
         <form onSubmit={handleSubmit}>
+
+        {/* cloudinary uploads  */}
+
+        <UploadWidget setMediaUrl={(url) =>
+
+            handleUpload(url, formData.mediaType)
+        }
+
+        setMediaType={(type) =>
+            setFormData((previousData) => ({...previousData,mediaType: type}))
+
+        }
+        
+        
+        />
 
         Media Type:
 

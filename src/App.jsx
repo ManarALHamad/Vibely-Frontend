@@ -14,7 +14,7 @@ import PostList from "./pages/posts/PostList"
 import UpdatePost from "./pages/posts/UpdatePost"
 import * as commentService from './services/commentService'
 import CommentForm from "./pages/comments/CommentForm"
-
+import UploadWidget from "./components/UploadWidget"
 
 
 const getUserFromToken = () => {
