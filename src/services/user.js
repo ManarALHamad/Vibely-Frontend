@@ -1,4 +1,4 @@
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/users`
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`
 
 const index = async (formData) => {
     try {
@@ -27,7 +27,7 @@ const toggleFollow = async(userId) => {
     const token = localStorage.getItem('token')
 
      const res = await fetch(
-        `${BASE_URL}/${userId}/follow`,
+        `${BASE_URL}/users/${userId}/follow`,
     {
     method: 'PUT',
     headers: {
