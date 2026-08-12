@@ -59,86 +59,135 @@ setEditContent("")
 
 return (
 
-   <main>
+ <main className="post-details-page">
 
-     <h2>{post.caption}</h2>
-
-    { post.mediaType === "image"? <img src={post.mediaUrl} alt={post.caption} width="400" /> :
-        
-    <video src={post.mediaUrl} controls width="400"/> }
-                  
-    <p>Category: {post.category}</p>
-
-    <p> Posted by:{post.author.username}</p>
+ <div className="post-details-card">
 
 
-    {isOwner && (
+ <div className="post-details-media">
 
-     <>
+ {post.mediaType === "image" ? (
 
-     <button onClick={handleDelete}> Delete Post</button>
+  <img src={post.mediaUrl} alt={post.caption} />  ) : (
+                            
+  <video src={post.mediaUrl} controls />
+  
+  )}
 
-      <Link to={`/posts/${postId}/edit`}> Edit Post</Link>
-                
-        </>
-        )}
+ </div>
+
+ <div className="post-details-content">
 
 
+ <div className="post-details-header">
 
-<CommentForm postId={post._id}addComment={props.addComment} />
+<p className="post-details-author"> @{post.author.username}</p>
+
+ <h2>{post.caption}</h2>
+
+ <span className="post-details-category"> {post.category} </span>
+ 
+  {isOwner && (
+
+  <div className="post-owner-actions">
+
+  <Link to={`/posts/${postId}/edit`} className="edit-post-button" > Edit Post </Link>
+
+  <button onClick={handleDelete} className="delete-post-button">Delete  </button>
 
 
+ </div>
+
+ )}
+
+ </div>
+
+ <div className="post-comments">
 
  <h3>Comments</h3>
 
-    {props.comments.filter((comment) => {
-    
-    const commentPostId = comment.post?._id || comment.post
+ <div className="comments-list">
 
-        return commentPostId === post._id }).map((comment) => {
+    {props.comments .filter((comment) => {
+                               
+   const commentPostId =
+                                   
+   comment.post?._id || comment.post
 
-        const isCommentOwner =
-            comment.author?._id === props.user?._id
+  return commentPostId === post._id
 
-        return (
-        
-        <div key={comment._id}>
+   }) .map((comment) => {
+                               
 
-        <p>{comment.author?.username}</p>
-        
-        {editingCommentId === comment._id ? (
-        
-        <>
-         <input type="text" value={editContent} onChange={(event) =>   setEditContent(event.target.value) } />         
-            
-         {/* save the update */}
-
-        <button onClick={() => handleUpdateComment(comment._id)} >Save💟</button>
-                           
-         </>                
-          ) : (                    
-                        
-         <p>{comment.content}</p>                   
-                        
-         )}           
-              
-                   
-        {isCommentOwner && (       
-
-          <>        
-         <button onClick={() =>handleEditComment(comment)}> Edit  </button>
+   const isCommentOwner =
   
-         <button onClick={() => props.deleteComment(comment._id)} > Delete Comment </button>
+   comment.author?._id === props.user?._id
+
+     return (
+
+      <div className="comment-item"  key={comment._id}>
+  
+     <p className="comment-author">  @{comment.author?.username} </p>
+    
+     {editingCommentId === comment._id ? (
+
+     <div className="comment-edit">
+
+      <input type="text" value={editContent} onChange={(event) =>setEditContent(event.target.value)} />
+
+
+      <button onClick={() => handleUpdateComment(comment._id) } >Save</button>
+                                                       
+  
+        </div>
+
+           ) : (
+
+         <p className="comment-content"> {comment.content} </p>
+      
+           )}
+
+
+            {isCommentOwner && (
+
+            <div className="comment-actions">
+
+              <button onClick={() =>handleEditComment(comment)}>Edit </button>
+       
+              <button onClick={() => props.deleteComment(comment._id)}> Delete </button>
+     
+
+              </div>
+
+              )}
+
+              </div>
+
+                )
+             })}
+
+                        </div>
+
+
+
+        <div className="comment-form-container">
+
+        <CommentForm
+        
+        postId={post._id}
+        addComment={props.addComment} />
                            
-          
-        </>
-         )}
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
-        )
-    })}
-    </main>
-)
+
+        </main>
+    )
 
 }
     
