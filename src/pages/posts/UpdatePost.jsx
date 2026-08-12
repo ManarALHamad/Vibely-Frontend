@@ -34,50 +34,113 @@ const UpdatePost = (props) => {
     }
 
     return (
-        <main>
+    <main className="edit-post-page">
 
-            <h2>Edit Post</h2>
+        <div className="edit-post-container">
 
-            <form onSubmit={handleSubmit}>
-
-                Media Type:
-
-                <select name="mediaType"value={formData.mediaType} onChange={handleChange}>
-                <option value="image">Image</option>   
-                <option value="video">Video</option>   
-                </select>   
-               Media URL: 
+        <div className="edit-post-heading">
+        
+        <h2>Edit Post</h2>
+        <p>Update your post details</p>
             
-                <input type="url" name="mediaUrl" value={formData.mediaUrl} onChange={handleChange}/>
-            
-               Caption: 
-               
-               <textarea name="caption" value={formData.caption}onChange={handleChange} />
+            </div>
 
-              Category:
+            <form className="edit-post-form" onSubmit={handleSubmit}>
 
-        <select name="category" value={formData.category} onChange={handleChange} >
-            
-             <option value="">Select a category</option>
-             <option value="fashion">Fashion</option>
-             <option value="food">Food</option>
-             <option value="travel">Travel</option>
-             <option value="technology">Technology</option>
-             <option value="education">Education</option>
-             <option value="comedy">Comedy</option>
-             <option value="lifestyle">Lifestyle</option>
-             <option value="other">Other</option>
-        </select>                    
+                <div className="edit-post-preview">
+
+                    {formData.mediaUrl && (
+                        formData.mediaType === "image" ? (
+                            <img
+                                src={formData.mediaUrl}
+                                alt={formData.caption}
+                            />
+                        ) : (
+                            <video
+                                src={formData.mediaUrl}
+                                controls
+                            />
+                        )
+                    )}
+
+                </div>
 
 
-        <button type="submit">Save Changes </button>
+                <div className="edit-post-details">
+
+                    <div className="edit-post-field">
+                        <label>Media Type</label>
+
+                        <select
+                            name="mediaType"
+                            value={formData.mediaType}
+                            onChange={handleChange}
+                        >
+                            <option value="image">Image</option>
+                            <option value="video">Video</option>
+                        </select>
+                    </div>
+
+
+                    <div className="edit-post-field">
+                        <label>Media URL</label>
+
+                        <input
+                            type="url"
+                            name="mediaUrl"
+                            value={formData.mediaUrl}
+                            onChange={handleChange}
+                        />
+                    </div>
+
+
+                    <div className="edit-post-field">
+                        <label>Caption</label>
+
+                        <textarea
+                            name="caption"
+                            value={formData.caption}
+                            onChange={handleChange}
+                        />
+                    </div>
+
+
+                    <div className="edit-post-field">
+                        <label>Category</label>
+
+                        <select
+                            name="category"
+                            value={formData.category}
+                            onChange={handleChange}
+                        >
+                            <option value="">Select a category</option>
+                            <option value="fashion">Fashion</option>
+                            <option value="food">Food</option>
+                            <option value="travel">Travel</option>
+                            <option value="technology">Technology</option>
+                            <option value="education">Education</option>
+                            <option value="comedy">Comedy</option>
+                            <option value="lifestyle">Lifestyle</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+
+                    <button className="edit-post-save" type="submit">  Save Changes  </button>
+                        
+                        
                     
-               
+                      
+                  
+
+                </div>
 
             </form>
 
-        </main>
-    )
+        </div>
+
+    </main>
+)
 }
 
 export default UpdatePost

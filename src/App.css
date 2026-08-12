@@ -2548,3 +2548,242 @@ a {
   }
 
 }
+
+
+/* =========================
+   EDIT POST PAGE
+========================= */
+
+.edit-post-page {
+    width: 100%;
+    min-height: calc(100vh - 70px);
+
+    padding: 45px 25px 70px;
+
+    background: var(--ink-black);
+    color: white;
+}
+
+.edit-post-container {
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+}
+
+
+/* HEADING */
+
+.edit-post-heading {
+    margin-bottom: 30px;
+}
+
+.edit-post-heading h2 {
+    margin: 0 0 7px;
+
+    color: white;
+
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.edit-post-heading p {
+    margin: 0;
+
+    color: #8da9b7;
+
+    font-size: 0.9rem;
+}
+
+
+/* FORM CARD */
+
+.edit-post-form {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 45px;
+
+    padding: 35px;
+
+    background: rgba(0, 53, 84, 0.2);
+
+    border: 1px solid rgba(0, 166, 251, 0.13);
+    border-radius: 18px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.22);
+}
+
+
+/* IMAGE / VIDEO PREVIEW */
+
+.edit-post-preview {
+    width: 100%;
+    height: 480px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    background: #020b10;
+
+    border: 2px dashed rgba(0, 166, 251, 0.3);
+    border-radius: 14px;
+}
+
+.edit-post-preview img,
+.edit-post-preview video {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    background: #000;
+}
+
+
+/* RIGHT SIDE */
+
+.edit-post-details {
+    display: flex;
+    flex-direction: column;
+
+    gap: 25px;
+}
+
+
+/* EACH FIELD */
+
+.edit-post-field {
+    display: flex;
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+.edit-post-field label {
+    color: #dceaf1;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+
+/* INPUT / SELECT / TEXTAREA */
+
+.edit-post-field input,
+.edit-post-field select,
+.edit-post-field textarea {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid var(--deep-space-blue);
+    border-radius: 9px;
+
+    outline: none;
+
+    background: rgba(5, 25, 35, 0.9);
+
+    color: white;
+
+    font-size: 0.9rem;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* FOCUS */
+
+.edit-post-field input:focus,
+.edit-post-field select:focus,
+.edit-post-field textarea:focus {
+    border-color: var(--fresh-sky);
+
+    box-shadow: 0 0 0 3px rgba(0, 166, 251, 0.1);
+}
+
+
+/* CAPTION */
+
+.edit-post-field textarea {
+    min-height: 160px;
+
+    resize: vertical;
+}
+
+
+/* SAVE BUTTON */
+
+.edit-post-save {
+    width: 100%;
+
+    margin-top: auto;
+
+    padding: 13px 20px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: linear-gradient(
+        135deg,
+        var(--fresh-sky),
+        var(--steel-blue)
+    );
+
+    color: white;
+
+    font-size: 0.9rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.edit-post-save:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 22px rgba(0, 166, 251, 0.25);
+}
+
+
+/* =========================
+   TABLET / MOBILE
+========================= */
+
+@media (max-width: 750px) {
+
+    .edit-post-page {
+        padding: 30px 15px 50px;
+    }
+
+    .edit-post-form {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+        padding: 22px;
+    }
+
+    .edit-post-preview {
+        height: 400px;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .edit-post-preview {
+        height: 350px;
+    }
+}
