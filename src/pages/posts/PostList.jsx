@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom"
 
 
@@ -8,86 +7,116 @@ const PostList = (props) => {
         return <p>Loading posts...</p>
     }
 
-   return (
-    <main>
+    return (
 
-     <h2>All Posts</h2>
+        <main className="post-list">
 
-      {props.posts.map((post) => {
+            <h2>All Posts</h2>
 
-    const isLiked = post.likes?.some(
-        (like) => like._id === props.user._id
-    )
+            {props.posts.map((post) => {
 
-       return (
+                const isLiked = post.likes?.some(
+                    (like) => like._id === props.user._id
+                )
 
-         <div key={post._id}>
+                return (
 
-         {/* post author */}
+                    <div className="post-card" key={post._id}>
 
-        <p>Posted By: {post.author?.username} </p>
-
-        {/* photo or video */}
-
-        {post.mediaUrl && (
-
-            <>
-            {post.mediaType === "image" ? (
-
-                <img  src={post.mediaUrl} width="300"  />
-             ) : (
-
-                <video  src={post.mediaUrl} controls width="300" /> )}
-            
-            </>
-        )}
-
-  
+                        <p className="post-author">
+                            Posted By: {post.author?.username}
+                        </p>
 
 
+                        {post.mediaUrl && (
 
-         <h3>{post.caption}</h3>
-         <p>{post.category}</p>
-                
-        {/* like button ♥️ */}
+                            <div className="post-media">
 
-        <button  onClick={() => props.toggleLike(post._id)} > {isLiked ? "❤️" : "🤍"}  </button>        
+                                {post.mediaType === "image" ? (
+
+                                    <img
+                                        src={post.mediaUrl}
+                                        width="300"
+                                    />
+
+                                ) : (
+
+                                    <video
+                                        src={post.mediaUrl}
+                                        controls
+                                        width="300"
+                                    />
+
+                                )}
+
+                            </div>
+                        )}
 
 
-        <span> {post.likes?.length || 0} likes </span>
+                        <div className="post-content">
+
+                            <h3 className="post-caption">
+                                {post.caption}
+                            </h3>
+
+                            <p className="post-category">
+                                {post.category}
+                            </p>
 
 
-        {/* who liked it */}
+                            {/* like button ♥️ */}
 
-         {post.likes?.length > 0 && (
+                            <div className="post-actions">
 
-          <p> Liked by:{" "}
-          {post.likes.map((like) => {                      
-          
-          return like.username}).join(", ")} </p>
-                                
-             
-             )}                       
-                                
-                           
-        {/* post details  */}
+                                <button
+                                    className="like-button"
+                                    onClick={() => props.toggleLike(post._id)}
+                                >
+                                    {isLiked ? "❤️" : "🤍"}
+                                </button>
 
-        <Link to={`/posts/${post._id}`}> View Post </Link>
-                           
-                       
+                                <span className="like-count">
+                                    {post.likes?.length || 0} likes
+                                </span>
 
-         </div>
+                            </div>
 
-          )
+
+                            {/* who liked it */}
+
+                            {post.likes?.length > 0 && (
+
+                                <p className="liked-by">
+                                    Liked by:{" "}
+
+                                    {post.likes.map((like) => {
+                                        return like.username
+                                    }).join(", ")}
+
+                                </p>
+
+                            )}
+
+
+                            {/* post details */}
+
+                            <Link
+                                className="view-post"
+                                to={`/posts/${post._id}`}
+                            >
+                                View Post
+                            </Link>
+
+                        </div>
+
+                    </div>
+
+                )
 
             })}
 
         </main>
     )
-    
-
-     
-    
 }
 
 export default PostList
