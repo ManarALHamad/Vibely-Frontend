@@ -66,13 +66,12 @@ return(
         
 
        {formData.mediaUrl && (
+
         <div>
         {formData.mediaType === "image" ? (
 
               <img src={formData.mediaUrl} alt="Preview" width="300" />
-                
-                
-             
+       
             
         ) : (
               <video src={formData.mediaUrl} controls width="300" />
@@ -113,6 +112,7 @@ return(
              <option value="comedy">Comedy</option>
              <option value="lifestyle">Lifestyle</option>
              <option value="other">Other</option>
+             
         </select>                    
 
         <button type="submit"> Publish </button>

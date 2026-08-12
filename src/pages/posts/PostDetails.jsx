@@ -3,13 +3,12 @@ import { useState } from "react"
 import CommentForm from "../comments/CommentForm"
 
 
-
 const PostDetails = (props) => {
 
    const { postId }  = useParams()
    const navigate = useNavigate()
 
-   //comments editing
+  
    const [editingCommentId, setEditingCommentId] = useState(null)
    const [editContent, setEditContent] = useState("")
 
@@ -32,7 +31,7 @@ const handleDelete = async () => {
     }
 
 
-// only owner can see deleteButton and add Button other user only can write comment
+
 
  const isOwner = post.author?._id === props.user?._id
  
@@ -43,7 +42,7 @@ const handleEditComment = (comment) => {
     setEditContent(comment.content)
 }
 
-//comment updating 
+
 
 const handleUpdateComment = async (commentId) => { 
 
@@ -84,11 +83,11 @@ return (
         </>
         )}
 
-{/* import comment form    */}
+
 
 <CommentForm postId={post._id}addComment={props.addComment} />
 
-{/* Display the comments under the post    */}
+
 
  <h3>Comments</h3>
 

@@ -14,7 +14,6 @@ import PostList from "./pages/posts/PostList"
 import UpdatePost from "./pages/posts/UpdatePost"
 import * as commentService from './services/commentService'
 import CommentForm from "./pages/comments/CommentForm"
-// import UploadWidget from "./components/UploadWidget"
 import AllProfiles from "./pages/profile/AllProfiles"
 
 
@@ -61,7 +60,7 @@ const App = () => {
     
   }, [user])
 
-//useEffect for the comments
+
 
 useEffect(() => {
 
@@ -185,9 +184,6 @@ const toggleLike = async (postId) => {
 
   setPosts(updatedPosts)
 
-
-
-
 }
 
 
@@ -208,11 +204,7 @@ const toggleLike = async (postId) => {
       <Route path="/profiles" element={<AllProfiles user={user} />} />
       <Route path="/profiles/:userId" element={<Profile user={user} posts={posts} />}  />
 
-    
-    
- 
   
-
     
    
       </Routes>

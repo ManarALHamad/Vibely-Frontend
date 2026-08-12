@@ -97,11 +97,6 @@ const isFollowing = user.followers?.some((follower) => {
      </div>
 
 
-     {/* <Link to={`/profiles/${user._id}`}>  View Profile</Link> */}
-                              
-                            
-    {/* don't follow yourself */}
-
      {user._id !== props.user?._id && (
 
       <button   onClick={() => handleFollow(user._id)}> {isFollowing  ? "Unfollow"  : "Follow"} </button>                      

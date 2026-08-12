@@ -1,37 +1,10 @@
 import { useEffect, useState } from "react"
-// import { index } from '../services/user'
 import PostList from "./posts/PostList"
 import * as userService from '../services/user'
 
 
 const Dashboard = (props) => {
 
-    const [allUsers, setAllUsers] = useState([])
-
-    useEffect(() => {
-        const fetchUsers = async () => {
-            const usersData =  await userService.index()
-            setAllUsers(usersData)
-        }
-        fetchUsers()
-        
-    }, [])
-
-    const handleFollow = async (userId) => {
-
-    const updatedUser = await userService.toggleFollow(userId)
-
-    const updatedUsers = allUsers.map((user) => {
-
-        if (user._id === userId) {
-            return updatedUser
-        }
-
-        return user
-    })
-
-    setAllUsers(updatedUsers)
-}
 
     return (
 
@@ -50,8 +23,6 @@ const Dashboard = (props) => {
             
         </section>
 
-
-       
 
         </section>
     )

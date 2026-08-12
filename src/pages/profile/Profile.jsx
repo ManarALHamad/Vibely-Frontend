@@ -6,9 +6,40 @@ import * as userService from "../../services/user"
 
 const Profile = (props) => {
 
+const [profileUser, setProfileUser] = useState(null)
 const [myPosts, setMyPosts] = useState([])
 
 useEffect(() => {
+
+ const fetchProfileUser = async () => {
+
+  try {
+
+ const users = await userService.index()
+
+const currentUser = users.find((user) => {
+return user._id === props.user?._id
+})
+
+   setProfileUser(currentUser)
+
+  } catch (error) {
+
+ console.log(error)
+            }
+        }
+
+        if (props.user) {
+            fetchProfileUser()
+        }
+
+    }, [props.user])
+
+
+
+useEffect(() => {
+
+ if (!props.user) return
 
     const userPosts = props.posts.filter((post) => {
 
@@ -24,15 +55,9 @@ useEffect(() => {
 
 }, [props.posts, props.user])
 
-const [profileUser, setProfileUser] = useState(props.user)
-
-const handleFollow = async () => {
-
-    const updatedUser = await userService.toggleFollow(profileUser._id)
-
-    setProfileUser(updatedUser)
+if (!profileUser) {
+    return <p>Loading profile...</p>
 }
-
 
 return (
 
@@ -43,7 +68,8 @@ return (
 
   <div className="profile-picture">
 
-   <img src={props.user.profileImage || "https://i.pravatar.cc/150" }alt={props.user.username} />
+   <img src={profileUser.profileImage} 
+   alt={profileUser.username} />
                             
  
  </div>
@@ -51,7 +77,7 @@ return (
    <div className="profile-info">
 
       <h1 className="profile-username">
-        {props.user.username}
+        {profileUser.username}
     </h1>
 
       <div className="profile-stats">
@@ -62,13 +88,13 @@ return (
         </div>
 
          <div>
-          0
+          {profileUser.followers?.length || 0}
         <span>Followers</span>
 
           </div>
 
          <div>
-          0
+          {profileUser.following?.length || 0}
         <span>Following</span>
         </div>
 
@@ -80,13 +106,7 @@ return (
            <button>Create Post</button>
          </Link>
          
-        {profileUser._id !== props.user._id && (
-
-    <button onClick={handleFollow}>
-        {isFollowing ? "Unfollow" : "Follow"}
-    </button>
-
-)}
+   
 
          </div>
 
@@ -143,15 +163,15 @@ return (
                                     
 
                               
-              </Link>              
+      </Link>              
 
-                        ))}
+       ))}
 
-                    </div>
+    </div>
 
-                )}
+     )}
 
-            </section>
+       </section>
 
         </main>
     )

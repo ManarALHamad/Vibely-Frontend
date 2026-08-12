@@ -38,7 +38,6 @@ const UploadWidget = (props) => {
   },
 
 
-
     (error, result) => {
 
      if (!error && result.event === "success") {

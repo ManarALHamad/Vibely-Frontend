@@ -38,6 +38,7 @@ const show = async (id) => {
 }
 
 const create = async (formData) => {
+  
   const token = localStorage.getItem('token')
 
   const res = await fetch(`${BASE_URL}/new`, {

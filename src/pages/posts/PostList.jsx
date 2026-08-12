@@ -27,17 +27,7 @@ const PostList = (props) => {
 
         <p>Posted By: {post.author?.username} </p>
 
-
-
-
-        {/* {post.mediaType === "image" ? (
-        
-        <img src={post.mediaUrl}alt={post.caption}width="300" />
-                
-        ) : (
-        <video src={post.mediaUrl} controls  width="300"  />
-     
-         )} */}
+        {/* photo or video */}
 
         {post.mediaUrl && (
 
