@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import * as userService from "../../services/user"
 
 const Profile = (props) => {
 
@@ -22,6 +23,15 @@ useEffect(() => {
     setMyPosts(userPosts)
 
 }, [props.posts, props.user])
+
+const [profileUser, setProfileUser] = useState(props.user)
+
+const handleFollow = async () => {
+
+    const updatedUser = await userService.toggleFollow(profileUser._id)
+
+    setProfileUser(updatedUser)
+}
 
 
 return (
@@ -70,9 +80,13 @@ return (
            <button>Create Post</button>
          </Link>
          
-         {/* edit profile link or page */}
+        {profileUser._id !== props.user._id && (
 
-         <button>Edit Profile</button>
+    <button onClick={handleFollow}>
+        {isFollowing ? "Unfollow" : "Follow"}
+    </button>
+
+)}
 
          </div>
 

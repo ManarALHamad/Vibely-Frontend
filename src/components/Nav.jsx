@@ -26,7 +26,9 @@ const Nav = (props) => {
                        
            <li>  <Link to="/profile"> PROFILE </Link> </li>
                     
-           <li>  <Link to="/" onClick={handleSignOut}> Sign Out </Link>  </li>      
+           <li>  <Link to="/" onClick={handleSignOut}> Sign Out </Link>  </li>   
+
+           <li><Link to="/">ALL PROFILES</Link></li>   
    
             </ul> ) : (
                //not a user  

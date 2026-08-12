@@ -51,38 +51,7 @@ const Dashboard = (props) => {
         </section>
 
 
-        <section>
-
-    {allUsers.map((user) => {
-
-    const isFollowing = user.followers?.some((follower) => {
-        return follower._id === props.user._id
-    })
-
-    return (
-
-    <div className="card" key={user._id}>
-
-    <h3>{user.username}</h3>
-
-    <p>{user.followers?.length || 0} Followers</p>
-                
-          
-
-           
-     {user._id !== props.user._id && (
-            
-    <button onClick={() => handleFollow(user._id)}>{isFollowing ? "Unfollow" : "Follow"} </button>
- 
-            )}
-
-        </div>
-
-    )
-
-})}
-
-            </section>
+       
 
         </section>
     )
