@@ -15,6 +15,8 @@ import UpdatePost from "./pages/posts/UpdatePost"
 import * as commentService from './services/commentService'
 import CommentForm from "./pages/comments/CommentForm"
 // import UploadWidget from "./components/UploadWidget"
+import AllProfiles from "./pages/profile/AllProfiles"
+
 
 
 const getUserFromToken = () => {
@@ -203,6 +205,8 @@ const toggleLike = async (postId) => {
       <Route path="/profile" element={<Profile user={user} posts={posts} />} />
       <Route path="/posts" element={<PostList posts={posts}  user={user}  toggleLike={toggleLike} isLoading={isLoading} /> }/>
       <Route path="/posts/:postId/edit"element={<UpdatePost posts={posts} updatePost={updatePost} />} />
+      <Route path="/profiles" element={<AllProfiles user={user} />} />
+      <Route path="/profiles/:userId" element={<Profile user={user} posts={posts} />}  />
 
     
     

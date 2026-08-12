@@ -13,9 +13,9 @@ useEffect(() => {
     const userPosts = props.posts.filter((post) => {
 
         const authorId =
-            typeof post.author === "object"
-                ? post.author?._id
-                : post.author
+          typeof post.author === "object"
+          ? post.author?._id
+          : post.author
 
         return authorId === props.user?._id
     })

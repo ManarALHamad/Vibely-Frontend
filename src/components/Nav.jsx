@@ -28,7 +28,7 @@ const Nav = (props) => {
                     
            <li>  <Link to="/" onClick={handleSignOut}> Sign Out </Link>  </li>   
 
-           <li><Link to="/">ALL PROFILES</Link></li>   
+           <li><Link to="/profiles">ALL PROFILES</Link></li>   
    
             </ul> ) : (
                //not a user  
