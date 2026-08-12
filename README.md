@@ -1,17 +1,66 @@
-# React + Vite
+# Vibely Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Vibely is a social media web application where users can share images and videos, interact with posts, and connect with other users.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Sign up and sign in
+- Create image and video posts
+- Upload media using Cloudinary
+- View posts in the feed
+- Like and unlike posts
+- Add, edit, and delete comments
+- View user profiles
+- Follow and unfollow users
+- Edit and delete your own posts
 
-## React Compiler
+## Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- JavaScript
+- React Router
+- CSS
+- Cloudinary
+- JWT Authentication
 
-## Expanding the ESLint configuration
+## Backend
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# Vibely-Frontend
+The backend for Vibely is built using Node.js, Express, MongoDB, and Mongoose.
+
+[Vibely Backend Repository](https://github.com/ManarALHamad/Vibely-Backend)
+
+## Getting Started
+
+### 1. Clone the Frontend Repository
+
+```bash
+git clone YOUR_FRONTEND_REPOSITORY_URL
+```
+
+### 2. Navigate to the Project
+
+```bash
+cd Vibely-Frontend
+```
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Create the Environment Variables
+
+Create a `.env` file in the root of the frontend project.
+
+Add:
+
+```env
+VITE_BACK_END_SERVER_URL=http://localhost:3000
+```
+
+### 5. Run
+
+```bash
+npm run dev
+```
+
