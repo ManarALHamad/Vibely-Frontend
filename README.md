@@ -2,6 +2,11 @@
 
 Vibely is a social media web application where users can share images and videos, interact with posts, and connect with other users.
 
+## Deployed App
+
+[Vibely Live App](https://willowy-kringle-14f6c4.netlify.app/)
+
+
 ## Features
 
 - Sign up and sign in
