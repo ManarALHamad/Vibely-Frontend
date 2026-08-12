@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react"
+
 import PostList from "./posts/PostList"
-import * as userService from '../services/user'
+
 
 
 const Dashboard = (props) => {
@@ -8,23 +8,36 @@ const Dashboard = (props) => {
 
     return (
 
-        <section>
+        <main className="dashboard-page">
 
-         <header>
-                <h1>Welcome {props.user.username}!</h1>
+        <header className="dashboard-header">
+
+        <div>
+        
+        <p className="dashboard-greeting">Welcome</p>
+                       
+        <h1>{props.user.username} 👋</h1>
+                        
+                    
+        </div>
+
         </header>
 
-      
-        <section>
 
-        <h2>Feed</h2>
+        <section className="feed-section">
+
+         <div className="feed-heading">
+
+        <h2>For You</h2>
+                
+        </div>
 
         <PostList posts={props.posts} isLoading={props.isLoading} user={props.user} toggleLike={props.toggleLike} />
-            
-        </section>
+                   
+     
+            </section>
 
-
-        </section>
+        </main>
     )
 }
 

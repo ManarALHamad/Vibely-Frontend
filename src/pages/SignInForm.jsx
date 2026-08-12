@@ -59,7 +59,7 @@ return(
 
 Password 
                        
-  <input id="password" type="password" name="password" value={formData.password}  required onChange={handleChange} placeholder="Enter your password"  />          
+<input id="password" type="password" name="password" value={formData.password}  required onChange={handleChange} placeholder="Enter your password"  />          
 
     <div className="auth-actions">
 
