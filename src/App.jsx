@@ -33,7 +33,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [comments, setComments] = useState([])
 
-  //posts
+  
 
  useEffect(() => {
 
@@ -70,7 +70,7 @@ useEffect(() => {
 
       const commentsData = await commentService.index()
 
-      // console.log("COMMENTS FROM DATABASE:", commentsData)
+     
 
       setComments(commentsData)
       
@@ -94,7 +94,7 @@ const addPost = async (formData) => {
 
   const newPost = await postService.create(formData)
 
-  // newest posts will appear first
+  
 
   setPosts([newPost, ...posts])
 
@@ -131,7 +131,7 @@ const addComment = async (postId, formData) => {
 
 }
 
-//delete comment
+
 
 const deleteComment = async (commentId) => {
 
@@ -146,7 +146,7 @@ const deleteComment = async (commentId) => {
 
 }
 
-//update comment
+
 
 const updateComment = async (commentId, formData) => {
 
@@ -165,8 +165,6 @@ const updateComment = async (commentId, formData) => {
 }
 
 
-
-//posts likes 
 
 const toggleLike = async (postId) => {
 

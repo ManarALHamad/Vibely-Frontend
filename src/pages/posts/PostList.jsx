@@ -11,46 +11,39 @@ const PostList = (props) => {
 
         <main className="post-list">
 
-            <h2>All Posts</h2>
+         <h2>All Posts</h2>
 
-            {props.posts.map((post) => {
+        {props.posts.map((post) => {
 
-                const isLiked = post.likes?.some(
-                    (like) => like._id === props.user._id
-                )
+        const isLiked = post.likes?.some(
+        
+            (like) => like._id === props.user._id
+        )
 
-                return (
+       return (
 
-                    <div className="post-card" key={post._id}>
+        <div className="post-card" key={post._id}>
 
-                        <p className="post-author">
-                            Posted By: {post.author?.username}
-                        </p>
+          <p className="post-author">
+          Posted By: {post.author?.username}  </p>
 
+          {post.mediaUrl && (
 
-                        {post.mediaUrl && (
+          <div className="post-media">
 
-                            <div className="post-media">
+             {post.mediaType === "image" ? (
 
-                                {post.mediaType === "image" ? (
+              <img src={post.mediaUrl} width="300" />
+      
 
-                                    <img
-                                        src={post.mediaUrl}
-                                        width="300"
-                                    />
+            ) : (
 
-                                ) : (
+              <video src={post.mediaUrl} controls  width="300"  />
+ 
+            )}
 
-                                    <video
-                                        src={post.mediaUrl}
-                                        controls
-                                        width="300"
-                                    />
-
-                                )}
-
-                            </div>
-                        )}
+                </div>
+               )}
 
 
                         <div className="post-content">
@@ -62,9 +55,6 @@ const PostList = (props) => {
                             <p className="post-category">
                                 {post.category}
                             </p>
-
-
-                            {/* like button ♥️ */}
 
                             <div className="post-actions">
 
@@ -82,8 +72,6 @@ const PostList = (props) => {
                             </div>
 
 
-                            {/* who liked it */}
-
                             {post.likes?.length > 0 && (
 
                                 <p className="liked-by">
@@ -98,18 +86,16 @@ const PostList = (props) => {
                             )}
 
 
-                            {/* post details */}
+           <Link
+           className="view-post"
+             to={`/posts/${post._id}`}
+                >
+               View Post
+              </Link>
 
-                            <Link
-                                className="view-post"
-                                to={`/posts/${post._id}`}
-                            >
-                                View Post
-                            </Link>
+             </div>
 
-                        </div>
-
-                    </div>
+               </div>
 
                 )
 

@@ -14,7 +14,7 @@ const Dashboard = (props) => {
 
         <div>
         
-        <p className="dashboard-greeting">Welcome</p>
+        
                        
         <h1>{props.user.username} 👋</h1>
                         
