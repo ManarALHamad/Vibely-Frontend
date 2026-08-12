@@ -26,20 +26,19 @@ const CommentForm = (props) => {
         setFormData(initialState)
     }
 
-    return (
+  return (
+    <form className="comment-form" onSubmit={handleSubmit}>
 
-        <form onSubmit={handleSubmit}>
+        <textarea className="comment-form-input"name="content" value={formData.content}onChange={handleChange} placeholder="Write a comment..."
+    
+        />
 
-            <textarea name="content" value={formData.content} onChange={handleChange} placeholder="Write a comment..." />
-        
+        <button className="comment-form-button" type="submit">
+            Post Comment
+        </button>
 
-            <button type="submit"> Post Comment</button>
-               
-            
-
-        </form>
-
-    )
+    </form>
+)
 }
 
 export default CommentForm
