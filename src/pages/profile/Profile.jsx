@@ -1,4 +1,3 @@
-// here the user can view their username, profile photo, posts(images and videoes)
 
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
@@ -63,7 +62,7 @@ return (
 
 <main className="profile-page">
 
- {/* PROFILE HEADER */}
+
  <section className="profile-header">
 
   <div className="profile-picture">
@@ -115,7 +114,7 @@ return (
             </section>
 
 
-    {/* POSTS SECTION */}
+   
 
     <section className="profile-posts">
 
@@ -147,7 +146,7 @@ return (
                                         
         ) : (
 
-            // video not yet
+  
 
          <video src={post.mediaUrl} />
                                         
