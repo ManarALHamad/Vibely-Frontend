@@ -43,27 +43,59 @@ const handleSubmit = async (event) => {
     }
 
     return (
-        <section className="card">
-            <header>
-                <h1>Sign Up</h1>
-                <p>{message}</p>
-            </header>
-            <form onSubmit={handleSubmit}>
-                Username:
-                <input type="text" name="username" onChange={handleChange} value={formData.username} required />
-                 Birthday:
-                <input type="date" name="birthday"   onChange={handleChange} value={formData.birthday} required  />
-                Email:
-               <input type="text" name="email"  onChange={handleChange} value={formData.email} required  />
-                Password:
-                <input type="password" name="password" onChange={handleChange} value={formData.password} required />
-                Confirm Password:
-                <input type="password" name="confirmPassword" onChange={handleChange} value={formData.confirmPassword} required />
-                <div className="actions">
-                    <button type="submit" disabled={!isFormValid()}>Sign Up🤩</button>
-                    <button>Cancel</button>
-                </div>
-            </form>
+
+        <section className="auth-page">
+
+        <div className="auth-card signup-card">
+
+        <header className="auth-header">
+
+        <h1>Join Vibely 💙</h1>
+
+        <p> Create your account and start sharing your vibe</p>
+                       
+    
+       {message && (<p className="auth-error"> {message} </p> )}
+    
+        </header>
+
+
+        <form className="auth-form" onSubmit={handleSubmit}  >
+      
+        Username
+
+        <input id="username"  type="text"  name="username"placeholder="Choose a username" onChange={handleChange} value={formData.username} required />  
+
+        Birthday
+        
+        <input id="birthday" type="date"name="birthday"onChange={handleChange}value={formData.birthday} required />
+
+      Email
+    
+      <input id="email" type="email"name="email"placeholder="Enter your email" onChange={handleChange}value={formData.email} required />
+      
+      Password
+    
+     <input id="password" type="password" name="password"placeholder="Create a password"  onChange={handleChange} value={formData.password} required />
+
+     Confirm Password
+    
+    <input id="confirmPassword" type="password"name="confirmPassword" placeholder="Confirm your password" onChange={handleChange} value={formData.confirmPassword} required/>
+ 
+
+    <div className="auth-actions">
+
+     <button className="auth-submit"type="submit"  disabled={!isFormValid()}>  Sign Up   </button>
+   
+    <button className="auth-cancel" type="button"onClick={() => navigate('/')}>   Cancel </button>
+              
+
+        </div>
+
+        </form>
+
+        </div>
+
         </section>
     )
 }

@@ -3,12 +3,12 @@ import { Link } from "react-router-dom"
 const Nav = (props) => {
 
     const handleSignOut = () => {
-        localStorage.removeItem('token')
+        localStorage.removeItem("token")
         props.setUser(null)
     }
 
     return (
-        <nav>
+        <nav className="navbar">
 
             <Link className="nav-brand" to="/">
                 Vibely
@@ -16,32 +16,59 @@ const Nav = (props) => {
 
             {props.user ? (
 
-          <ul>
+                <ul className="nav-links">
 
-          <li>Welcome, {props.user.username}!</li>
+                    <li className="nav-welcome">
+                        Welcome, {props.user.username}!
+                    </li>
 
-           <li> <Link to="/"> FEED  </Link> </li>     
-                       
-           <li>  <Link to="/posts/new"> NEW POST </Link> </li>            
-                       
-           <li>  <Link to="/profile"> PROFILE </Link> </li>
-                    
-           <li>  <Link to="/" onClick={handleSignOut}> Sign Out </Link>  </li>   
+                    <li>
+                        <Link to="/">FEED</Link>
+                    </li>
 
-           <li><Link to="/profiles">ALL PROFILES</Link></li>   
-   
-            </ul> ) : (
-               //not a user  
-             <ul>
+                    <li>
+                        <Link to="/posts/new">NEW POST</Link>
+                    </li>
 
-            <li> <Link to="/"> Home</Link> </li>
+                    <li>
+                        <Link to="/profiles">ALL PROFILES</Link>
+                    </li>
 
-            <li>  <Link to="/sign-up"> Sign Up  </Link> </li>   
-                        
-             <li> <Link to="/sign-in"> Sign In </Link> </li>
-                        
-              </ul>               
-                        
+                    <li>
+                        <Link to="/profile">PROFILE</Link>
+                    </li>
+
+                    <li>
+                        <Link
+                            to="/"
+                            onClick={handleSignOut}
+                            className="sign-out"
+                        >
+                            SIGN OUT
+                        </Link>
+                    </li>
+
+                </ul>
+
+            ) : (
+
+                <ul className="nav-links">
+
+                    <li>
+                        <Link to="/">HOME</Link>
+                    </li>
+
+                    <li>
+                        <Link to="/sign-up">SIGN UP</Link>
+                    </li>
+
+                    <li>
+                        <Link to="/sign-in" className="nav-signin">
+                            SIGN IN
+                        </Link>
+                    </li>
+
+                </ul>
 
             )}
 

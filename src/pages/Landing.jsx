@@ -1,9 +1,27 @@
+
+import logo from "../assets/logo.png"
+
+
 const Landing = () => {
     return (
-        <section className="card">
-            <h1>Welcome!</h1>
-            <p>Sign up or sign in to see your dashboard.</p>
 
+<section className="landing-page">
+
+<div className="landing-content">
+
+<img src={logo} alt="Vibely Logo"  className="landing-logo"/>
+      
+<h1>Welcome to <span>Vibely</span> 💙</h1>
+               
+<p className="landing-tagline">
+   Share your vibe. Discover what's happening.
+    Connect with people </p>
+              
+    
+    <p className="landing-small-text"> Create • Share • Connect </p>
+                   
+            
+     </div>
         </section>
     )
 }
