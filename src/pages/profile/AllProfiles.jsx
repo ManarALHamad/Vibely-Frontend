@@ -79,7 +79,7 @@ const isFollowing = user.followers?.some((follower) => {
 
    return (
 
-     <div className="profile-card"key={user._id} >
+     <div className="profile-card" key={user._id} >
                             
                             
     <h2>{user.username}</h2>
