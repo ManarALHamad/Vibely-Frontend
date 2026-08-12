@@ -20,19 +20,19 @@ const UploadWidget = (props) => {
 
     styles: {
       palette: {
-        window: "#FFF7FB",
-        windowBorder: "#F2B6C6",
-        tabIcon: "#D94F70",
-        menuIcons: "#9B6B79",
-        textDark: "#2B1E24",
-        textLight: "#FFFFFF",
-        link: "#D94F70",
-        action: "#D94F70",
-        inactiveTabIcon: "#B89AA3",
-        error: "#D93025",
-        inProgress: "#D94F70",
-        complete: "#2E9E61",
-        sourceBg: "#FFF0F5"
+      window: "#FFF7FB",
+      windowBorder: "#00a6fbff",
+      tabIcon: "#00A6FB",
+      menuIcons: "#0582CA",
+      textDark: "#FFFFFF",
+      textLight: "#FFFFFF",
+      link: "#00A6FB",
+      action: "#0582CA",
+      inactiveTabIcon: "#6F8D9C",
+      error: "#FF4D6D",
+      inProgress: "#00A6FB",
+      complete: "#2ECA8B",
+      sourceBg: "#003554"
       }
     }
   },

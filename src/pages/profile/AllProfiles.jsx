@@ -111,7 +111,7 @@ const isFollowing = user.followers?.some((follower) => {
 
         })}
 
-            </div>
+        </div>
 
         </main>
     )
