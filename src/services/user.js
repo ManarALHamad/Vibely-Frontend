@@ -20,6 +20,32 @@ const index = async (formData) => {
     }
 }
 
+//toggleFollow
+
+const toggleFollow = async(userId) => {
+    
+    const token = localStorage.getItem('token')
+
+     const res = await fetch(
+        `${BASE_URL}/${userId}/follow`,
+    {
+    method: 'PUT',
+    headers: {
+       Authorization: `Bearer ${token}`
+            }
+        }
+    )
+    const data = await res.json()
+
+    if (!res.ok) {
+        throw new Error(`${res.status}: ${data.message}`)
+    }
+
+    return data
+}
+
+
 export {
     index,
+    toggleFollow,
 }
